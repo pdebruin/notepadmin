@@ -58,14 +58,18 @@
             </MenuItem>
         </Menu>
 
-        <AvaloniaEdit:TextEditor
-            Name="Editor"
-            FontFamily="Consolas, 'Segoe UI', 'Noto Sans', 'Noto Sans CJK SC', 'Noto Sans Devanagari', sans-serif"
-            FontSize="{Binding FontSize}"
-            WordWrap="{Binding WordWrapEnabled}"
-            ShowLineNumbers="False"
-            HorizontalScrollBarVisibility="Auto"
-            VerticalScrollBarVisibility="Auto"
-            IsReadOnly="False" />
+        <Separator DockPanel.Dock="Top" Opacity="0.35" />
+
+        <Border Padding="8,6,8,8">
+            <AvaloniaEdit:TextEditor
+                Name="Editor"
+                FontFamily="Consolas, 'Segoe UI', 'Noto Sans', 'Noto Sans CJK SC', 'Noto Sans Devanagari', sans-serif"
+                FontSize="{Binding FontSize}"
+                WordWrap="{Binding WordWrapEnabled}"
+                ShowLineNumbers="False"
+                HorizontalScrollBarVisibility="Auto"
+                VerticalScrollBarVisibility="Auto"
+                IsReadOnly="False" />
+        </Border>
     </DockPanel>
 </Window>
