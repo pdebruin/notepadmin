@@ -9,7 +9,17 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            rid: linux-x64
+            artifact: notepadmin-linux-x64
+          - os: windows-latest
+            rid: win-x64
+            artifact: notepadmin-win-x64
+
+    runs-on: ${{ matrix.os }}
 
     steps:
       - uses: actions/checkout@v4
@@ -25,14 +35,14 @@ jobs:
       - name: Build
         run: dotnet build v1/src/Notepadmin/Notepadmin.csproj -c Release --no-restore
 
-      - name: Publish linux-x64
-        run: dotnet publish v1/src/Notepadmin/Notepadmin.csproj -c Release -r linux-x64 -o publish/linux-x64
+      - name: Publish
+        run: dotnet publish v1/src/Notepadmin/Notepadmin.csproj -c Release -r ${{ matrix.rid }} -o publish/${{ matrix.rid }}
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: notepadmin-linux-x64
-          path: publish/linux-x64/
+          name: ${{ matrix.artifact }}
+          path: publish/${{ matrix.rid }}/
 
   release:
     needs: build
@@ -53,11 +63,19 @@ jobs:
       - name: Publish linux-x64
         run: dotnet publish v1/src/Notepadmin/Notepadmin.csproj -c Release -r linux-x64 -o publish/linux-x64
 
-      - name: Create tarball
+      - name: Publish win-x64
+        run: dotnet publish v1/src/Notepadmin/Notepadmin.csproj -c Release -r win-x64 -o publish/win-x64
+
+      - name: Create linux tarball
         run: tar -czf notepadmin-linux-x64.tar.gz -C publish/linux-x64 .
+
+      - name: Create windows zip
+        run: cd publish/win-x64 && zip -r ../../notepadmin-win-x64.zip .
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          files: notepadmin-linux-x64.tar.gz
+          files: |
+            notepadmin-linux-x64.tar.gz
+            notepadmin-win-x64.zip
           generate_release_notes: true
