@@ -28,13 +28,6 @@ public partial class App : Application
                 DataContext = vm,
             };
             desktop.MainWindow = mainWindow;
-
-            // Load file from CLI argument after window is initialized
-            mainWindow.Opened += (_, _) =>
-            {
-                if (Program.InitialFilePath != null)
-                    vm.LoadFromFile(Program.InitialFilePath);
-            };
         }
 
         base.OnFrameworkInitializationCompleted();

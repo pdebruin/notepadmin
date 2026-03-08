@@ -53,18 +53,19 @@ public partial class MainWindowViewModel : ViewModelBase
 
     public void LoadFromFile(string path)
     {
-        if (File.Exists(path))
+        var fullPath = Path.GetFullPath(path);
+        if (File.Exists(fullPath))
         {
-            var doc = _documentService.ReadFile(path);
+            var doc = _documentService.ReadFile(fullPath);
             _currentLineEnding = doc.DetectedLineEnding;
-            CurrentFilePath = path;
+            CurrentFilePath = fullPath;
             OnLoadText?.Invoke(doc.Text);
             IsModified = false;
         }
         else
         {
             // File doesn't exist yet — use as default save path
-            CurrentFilePath = path;
+            CurrentFilePath = fullPath;
             OnNewRequested?.Invoke();
             IsModified = false;
         }

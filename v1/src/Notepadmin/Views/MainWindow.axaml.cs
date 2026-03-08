@@ -33,6 +33,10 @@ public partial class MainWindow : Window
         WireViewModel();
         WireEditMenuItems();
         WireEditorEvents();
+
+        // Load file from CLI argument now that everything is wired
+        if (DataContext is MainWindowViewModel vm && Program.InitialFilePath != null)
+            vm.LoadFromFile(Program.InitialFilePath);
     }
 
     private void WireViewModel()
