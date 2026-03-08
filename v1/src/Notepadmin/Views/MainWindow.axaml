@@ -23,7 +23,9 @@
         <KeyBinding Gesture="Ctrl+W" Command="{Binding CloseFileCommand}" />
         <KeyBinding Gesture="Ctrl+F4" Command="{Binding CloseFileCommand}" />
         <KeyBinding Gesture="Ctrl+F" Command="{Binding FindCommand}" />
+        <KeyBinding Gesture="Ctrl+Add" Command="{Binding ZoomInCommand}" />
         <KeyBinding Gesture="Ctrl+OemPlus" Command="{Binding ZoomInCommand}" />
+        <KeyBinding Gesture="Ctrl+Subtract" Command="{Binding ZoomOutCommand}" />
         <KeyBinding Gesture="Ctrl+OemMinus" Command="{Binding ZoomOutCommand}" />
     </Window.KeyBindings>
 
@@ -37,7 +39,7 @@
                 <MenuItem Header="_Save" Command="{Binding SaveFileCommand}" InputGesture="Ctrl+S"/>
                 <MenuItem Header="Save _As..." Command="{Binding SaveFileAsCommand}" InputGesture="Ctrl+Shift+S"/>
                 <Separator/>
-                <MenuItem Header="_Close" Command="{Binding CloseFileCommand}" InputGesture="Ctrl+W / Ctrl+F4"/>
+                <MenuItem Header="_Close" Command="{Binding CloseFileCommand}" InputGesture="Ctrl+W"/>
                 <MenuItem Header="E_xit" Command="{Binding ExitAppCommand}" InputGesture="Alt+F4"/>
             </MenuItem>
 
@@ -60,8 +62,8 @@
             <MenuItem Header="_View">
                 <MenuItem Header="_Word Wrap" Command="{Binding ToggleWordWrapCommand}"/>
                 <Separator/>
-                <MenuItem Header="Zoom _In" Command="{Binding ZoomInCommand}" InputGesture="Ctrl+OemPlus"/>
-                <MenuItem Header="Zoom _Out" Command="{Binding ZoomOutCommand}" InputGesture="Ctrl+OemMinus"/>
+                <MenuItem Header="Zoom _In" Command="{Binding ZoomInCommand}" InputGesture="Ctrl+Add"/>
+                <MenuItem Header="Zoom _Out" Command="{Binding ZoomOutCommand}" InputGesture="Ctrl+Subtract"/>
             </MenuItem>
 
             <!-- Help -->
