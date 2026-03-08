@@ -2,6 +2,7 @@ using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core;
 using Avalonia.Data.Core.Plugins;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Avalonia.Markup.Xaml;
 using Notepadmin.ViewModels;
@@ -39,6 +40,7 @@ public partial class App : Application
         base.OnFrameworkInitializationCompleted();
     }
 
+    [UnconditionalSuppressMessage("Trimming", "IL2026", Justification = "DataValidators are removed, not used")]
     private void DisableAvaloniaDataAnnotationValidation()
     {
         // Get an array of plugins to remove

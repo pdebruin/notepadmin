@@ -12,7 +12,7 @@ sealed class Program
     public static void Main(string[] args)
     {
         InitialFilePath = args.Length > 0 ? args[0] : null;
-        BuildAvaloniaApp().StartWithClassicDesktopLifetime(args);
+        BuildAvaloniaApp().StartWithClassicDesktopLifetime(args: []);
     }
 
     public static AppBuilder BuildAvaloniaApp()
