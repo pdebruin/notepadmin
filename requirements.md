@@ -81,7 +81,7 @@ A minimal, cross-platform plain-text editor — a marriage of classic Windows No
 - Support basic Unicode characters
 - Standard text-editing behavior (caret, selection, scroll, etc.)
 - Vertical and horizontal **scrollbars** should appear when content overflows the visible area
-- **Font**: Consolas (fixed/monospace) as the primary font, with system Unicode font fallbacks for non-Latin scripts (CJK, Arabic, Hebrew, etc.) — not user-configurable
+- **Font**: Monospace font with cross-platform fallback chain (Cascadia Code → Consolas → DejaVu Sans Mono → Noto Sans Mono) — not user-configurable
 
 ## File Handling
 

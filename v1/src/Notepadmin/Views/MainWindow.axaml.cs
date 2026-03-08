@@ -198,15 +198,15 @@ public partial class MainWindow : Window
             vm.IsModified = true;
         };
 
-        // Ctrl+Scroll for zoom
-        _editor.PointerWheelChanged += (_, e) =>
+        // Ctrl+Scroll for zoom — use tunnel to intercept before editor scrolls
+        _editor.TextArea.AddHandler(PointerWheelChangedEvent, (_, e) =>
         {
             if (e.KeyModifiers.HasFlag(KeyModifiers.Control))
             {
                 vm.AdjustFontSize(e.Delta.Y);
                 e.Handled = true;
             }
-        };
+        }, RoutingStrategies.Tunnel);
 
         // Intercept Ctrl+V for plain-text-only paste
         _editor.TextArea.AddHandler(KeyDownEvent, OnEditorKeyDown, RoutingStrategies.Tunnel);

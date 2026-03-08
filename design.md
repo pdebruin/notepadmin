@@ -80,7 +80,7 @@ The `TextEditor` control automatically handles:
     </Menu>
     <AvaloniaEdit:TextEditor
         Name="Editor"
-        FontFamily="Consolas, 'Segoe UI', 'Noto Sans', 'Noto Sans CJK SC', 'Noto Sans Devanagari', sans-serif"
+        FontFamily="'Cascadia Code', Consolas, 'DejaVu Sans Mono', 'Noto Sans Mono', monospace"
         FontSize="{Binding FontSize}"
         WordWrap="{Binding WordWrapEnabled}"
         ShowLineNumbers="False"
@@ -328,6 +328,6 @@ dotnet run   # launches the app for testing
 | Command-line filename | `Program.cs` args → ViewModel |
 | UTF-8 encoding | `DocumentService` reads/writes UTF-8 |
 | Line ending detection + preservation | `DocumentService.DetectLineEnding` |
-| Consolas font | `FontFamily="Consolas"` in AXAML |
+| Monospace font with fallbacks | `FontFamily` chain in AXAML |
 | Scrollbars | AvaloniaEdit built-in |
 | Cross-platform single binary | `dotnet publish` with AOT per platform |
