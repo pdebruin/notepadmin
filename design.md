@@ -33,11 +33,11 @@ This is intentionally flat — the app is simple and doesn't warrant deep nestin
 
 | Component | Choice | Purpose |
 |---|---|---|
-| Framework | .NET 9 | Runtime, cross-platform support |
+| Framework | .NET 10 (LTS) | Runtime, cross-platform support |
 | GUI | Avalonia UI 11 | Cross-platform native-feeling window, menus, dialogs |
 | Text editor control | AvaloniaEdit | Text area with built-in undo/redo, find, scrollbars |
 | Architecture | MVVM (lightweight) | Separation of UI and logic via Avalonia data binding |
-| Packaging | `dotnet publish` with Native AOT | Single self-contained binary per platform |
+| Packaging | `dotnet publish` (self-contained, single-file, trimmed) | Single self-contained binary per platform |
 
 ---
 
@@ -270,8 +270,10 @@ static void Main(string[] args)
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net9.0</TargetFramework>
-    <PublishAot>true</PublishAot>
+    <TargetFramework>net10.0</TargetFramework>
+    <SelfContained>true</SelfContained>
+    <PublishSingleFile>true</PublishSingleFile>
+    <PublishTrimmed>true</PublishTrimmed>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Avalonia" Version="11.*" />
@@ -292,7 +294,7 @@ dotnet publish -c Release -r win-x64
 dotnet publish -c Release -r linux-x64
 ```
 
-Each produces a single self-contained binary in `bin/Release/net9.0/{rid}/publish/`.
+Each produces a single self-contained binary in `bin/Release/net10.0/{rid}/publish/`.
 
 ### Development
 
