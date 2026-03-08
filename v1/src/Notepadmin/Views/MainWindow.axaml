@@ -1,0 +1,71 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:Notepadmin.ViewModels"
+        xmlns:AvaloniaEdit="using:AvaloniaEdit"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
+        x:Class="Notepadmin.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Title="{Binding WindowTitle}"
+        Width="800" Height="600"
+        MinWidth="400" MinHeight="300">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <!-- File -->
+            <MenuItem Header="_File">
+                <MenuItem Header="_New" Command="{Binding NewFileCommand}" InputGesture="Ctrl+N"/>
+                <MenuItem Header="_Open" Command="{Binding OpenFileCommand}" InputGesture="Ctrl+O"/>
+                <Separator/>
+                <MenuItem Header="_Save" Command="{Binding SaveFileCommand}" InputGesture="Ctrl+S"/>
+                <MenuItem Header="Save _As..." Command="{Binding SaveFileAsCommand}" InputGesture="Ctrl+Shift+S"/>
+                <Separator/>
+                <MenuItem Header="_Close" Command="{Binding CloseFileCommand}" InputGesture="Ctrl+W"/>
+                <MenuItem Header="E_xit" Command="{Binding ExitAppCommand}" InputGesture="Alt+F4"/>
+            </MenuItem>
+
+            <!-- Edit -->
+            <MenuItem Header="_Edit">
+                <MenuItem Header="_Undo" Name="MenuUndo" InputGesture="Ctrl+Z"/>
+                <MenuItem Header="_Redo" Name="MenuRedo" InputGesture="Ctrl+Y"/>
+                <Separator/>
+                <MenuItem Header="Cu_t" Name="MenuCut" InputGesture="Ctrl+X"/>
+                <MenuItem Header="_Copy" Name="MenuCopy" InputGesture="Ctrl+C"/>
+                <MenuItem Header="_Paste" Name="MenuPaste" InputGesture="Ctrl+V"/>
+                <MenuItem Header="_Delete" Name="MenuDelete" InputGesture="Delete"/>
+                <Separator/>
+                <MenuItem Header="Select _All" Name="MenuSelectAll" InputGesture="Ctrl+A"/>
+                <Separator/>
+                <MenuItem Header="_Find..." Command="{Binding FindCommand}" InputGesture="Ctrl+F"/>
+            </MenuItem>
+
+            <!-- View -->
+            <MenuItem Header="_View">
+                <MenuItem Header="_Word Wrap" Command="{Binding ToggleWordWrapCommand}"/>
+                <Separator/>
+                <MenuItem Header="Zoom _In" Command="{Binding ZoomInCommand}" InputGesture="Ctrl+OemPlus"/>
+                <MenuItem Header="Zoom _Out" Command="{Binding ZoomOutCommand}" InputGesture="Ctrl+OemMinus"/>
+            </MenuItem>
+
+            <!-- Help -->
+            <MenuItem Header="_Help">
+                <MenuItem Header="_About" Command="{Binding ShowAboutCommand}"/>
+            </MenuItem>
+        </Menu>
+
+        <AvaloniaEdit:TextEditor
+            Name="Editor"
+            FontFamily="Consolas, 'Segoe UI', 'Noto Sans', 'Noto Sans CJK SC', 'Noto Sans Devanagari', sans-serif"
+            FontSize="{Binding FontSize}"
+            WordWrap="{Binding WordWrapEnabled}"
+            ShowLineNumbers="False"
+            HorizontalScrollBarVisibility="Auto"
+            VerticalScrollBarVisibility="Auto"
+            IsReadOnly="False" />
+    </DockPanel>
+</Window>
