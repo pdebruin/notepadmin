@@ -4,7 +4,7 @@
 [![GitHub release](https://img.shields.io/github/v/release/pdebruin/notepadmin)](https://github.com/pdebruin/notepadmin/releases/latest)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-A minimal, cross-platform plain-text editor — a marriage of classic Windows Notepad and gedit. Built with C#, .NET 10, and Avalonia UI.
+A minimal, cross-platform plain-text editor — a marriage of classic Windows Notepad (text only, no formatting!) and gedit. Built with C#, .NET 10, and Avalonia UI.
 
 ## Features
 
