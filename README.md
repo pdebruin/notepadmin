@@ -6,6 +6,8 @@
 
 A minimal, cross-platform plain-text editor — a marriage of classic Windows Notepad (text only, no formatting!) and gedit. Built with C#, .NET 10, and Avalonia UI.
 
+![Notepadmin on Ubuntu](screen-notepadmin-ubu.png)
+
 ## Features
 
 - **Simple and fast** — single window, menu bar, text area
